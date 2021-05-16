@@ -51,6 +51,11 @@ class PreferencesWindowController: NSViewController {
         autoLaunchCheckbox.state = foundHelper ? .on : .off
     }
     
+    override func viewDidAppear() {
+        rsuAmount.stringValue.removeAll()
+        comboBox.stringValue.removeAll()
+    }
+    
     override func viewWillAppear() {
         super.viewWillAppear()
         guard let window = view.window else { return }
