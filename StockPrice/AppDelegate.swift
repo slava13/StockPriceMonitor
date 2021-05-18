@@ -80,6 +80,7 @@ private extension AppDelegate {
         firstItem.view = basicView!
         menu.addItem(firstItem)
         menu.addItem(.separator())
+        menu.addItem(NSMenuItem(title: "Refresh", action: #selector(AppDelegate.refresh(_:)), keyEquivalent: "r"))
         menu.addItem(NSMenuItem(title: "Preferences", action: #selector(AppDelegate.preferencesWindow(_:)), keyEquivalent: ","))
         menu.addItem(.separator())
         menu.addItem(NSMenuItem(title: "Quit StockPrice", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
@@ -92,6 +93,10 @@ private extension AppDelegate {
         preferencesViewController.onApply = { self.restartAndPresent() }
         preferencesViewController.onExchange = { self.restartAndPresent() }
         preferencesViewController.onRefresh = { self.restartAndPresent() }
+    }
+    
+    @objc func refresh(_ sender: NSMenuItem) {
+        restartAndPresent()
     }
     
     func fetchStockPrice() {
