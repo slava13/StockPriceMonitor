@@ -40,7 +40,7 @@ final class NetworkCall: APIRequest {
     
     // Need to think how to create a generic method for both requests
     func getExchangeRate(for currency: String, completionHandler: @escaping (Result<ExchangeRate, ResponseError>) -> Void) {
-        let url = URL(string: "https://api.ratesapi.io/api/latest?base=USD")!
+        let url = URL(string: "https://api.frankfurter.app/latest?from=USD")!
         let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
             if let error = error {
                 print("URL error: \(error.localizedDescription)")
